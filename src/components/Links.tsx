@@ -4,7 +4,6 @@ import {
   Link,
   Text,
   Table,
-  TableCaption,
   TableContainer,
   Tbody,
   Td,

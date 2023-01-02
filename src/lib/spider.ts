@@ -1,9 +1,5 @@
 import axios from "axios";
 import * as cheerio from "cheerio";
-import * as fs from "fs";
-import * as path from "path";
-import { URL as urlParser } from "url";
-
 const baseUrl = "http://localhost:8080";
 
 interface ICrawl {
@@ -12,9 +8,6 @@ interface ICrawl {
 }
 
 const seenUrls = {} as any;
-const links: any[] = [];
-const images: any[] = [];
-const screenshot: any[] = [];
 
 const getUrl = (link: string, host: string, protocol: string) => {
   if (link.includes("http")) {
@@ -26,17 +19,13 @@ const getUrl = (link: string, host: string, protocol: string) => {
   }
 };
 
-const getHtmlElement = (element: string): any[] => {
-  return [];
-};
-
 const crawl = async ({ url, ignore }: ICrawl) => {
-  if (!url || !window.URL || seenUrls[url]) return;
+  // if (!url || !window.URL || seenUrls[url]) return;
 
   seenUrls[url] = true;
   const { host, protocol } = new window.URL(url);
   const { data } = await axios.get(`${baseUrl}/getCrawler?url=${url}`);
-  console.log({ data });
+
   // const html = await data.text();
   const $ = cheerio.load(data);
 
@@ -46,8 +35,6 @@ const crawl = async ({ url, ignore }: ICrawl) => {
   // const imageUrls = $("img")
   //   .map((i, link) => link.attribs.src)
   //   .get();
-
-  console.log({ links });
 
   // imageUrls?.forEach((imageUrl: string) => {
   //   axios({ url: getUrl(imageUrl, host, protocol) }).then((response: any) => {
@@ -74,9 +61,6 @@ const crawl = async ({ url, ignore }: ICrawl) => {
 export const CrawlApi = (inputWebsite: string) => {
   return crawl({
     url: inputWebsite,
-    ignore: "/search",
+    ignore: "", // "/search",
   });
-  // links: getHtmlElement("a"),
-  // images: getHtmlElement("img"),
-  // screenshot: getHtmlElement('screenshot'),
 };

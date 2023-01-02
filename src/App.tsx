@@ -24,7 +24,6 @@ export const App = () => {
           <Box>
             <SearchBar
               onSearch={(website) => {
-                console.log({ website });
                 setInputWebsite(website);
               }}
             />

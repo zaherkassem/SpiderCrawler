@@ -1,8 +1,8 @@
 import * as React from "react";
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react";
-import { Images } from "./Images";
+// import { Images } from "./Images";
 import { Links } from "./Links";
-import { Screenshots } from "./Screenshots";
+// import { Screenshots } from "./Screenshots";
 import { CrawlApi } from "../lib/spider";
 
 interface IResultsProps {
@@ -10,19 +10,21 @@ interface IResultsProps {
 }
 
 export const Results = ({ inputWebsite }: IResultsProps) => {
-  let images: any = [];
   const [links, setLinks] = React.useState<string[]>([]);
 
   React.useEffect(() => {
-    CrawlApi(inputWebsite)
-      .then((result) => {
-        const linksFromRes = result ?? { links: [] };
-        setLinks(linksFromRes?.links);
-      })
-      .catch((err) => {});
+    if (inputWebsite) {
+      CrawlApi(inputWebsite)
+        .then((result) => {
+          const linksFromRes = result ?? { links: [] };
+          setLinks(linksFromRes?.links);
+        })
+        .catch((err) => {
+          console.log("err:", err);
+        });
+    }
   }, [inputWebsite]);
 
-  console.log({ links, images });
   return (
     <Tabs>
       <TabList>
