@@ -27,7 +27,7 @@ export const Results = ({ inputWebsite }: IResultsProps) => {
     <Tabs>
       <TabList>
         <Tab>Links</Tab>
-        <Tab>Images</Tab>
+        {/*<Tab>Images</Tab>*/}
         {/* <Tab>Screenshots</Tab>*/}
       </TabList>
 
@@ -35,9 +35,9 @@ export const Results = ({ inputWebsite }: IResultsProps) => {
         <TabPanel>
           <Links links={links} />
         </TabPanel>
-        <TabPanel>
+        {/*<TabPanel>
           <Images images={images} />
-        </TabPanel>
+        </TabPanel>*/}
         {/*<TabPanel>
           <Screenshots screenshots={screenshots} />
         </TabPanel>*/}

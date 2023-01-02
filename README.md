@@ -10,6 +10,10 @@ Spider Crawler
 
 `$ yarn install`
 
-# Run App
+# Run Server side (into server folder)
 
-`$ yarn run`
+`$ yarn start`
+
+# Run Client side
+
+`$ yarn start`
