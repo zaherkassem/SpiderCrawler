@@ -15,8 +15,7 @@
   "keywords": [
     "Web crawler",
     "Crawler",
-    "Spider",
-    "interview"
+    "Spider"
   ],
   "dependencies": {
     "@chakra-ui/react": "^2.4.5",
